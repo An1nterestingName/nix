@@ -114,6 +114,7 @@
     git
     lshw # Used to get stuff for nvidia.nix - may no longer need
     unzip
+    kdePackages.qtbase
 
     vscodium # Text editor
     thunderbird # Mail Client
