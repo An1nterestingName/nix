@@ -143,6 +143,7 @@
     })
     prismlauncher
     libreoffice-qt6-fresh
+    qalculate-qt
   ];
 
   programs.steam.enable = true;
