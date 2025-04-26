@@ -71,12 +71,29 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber =  {
+      configPackages = [ # Disable the HSP/HFP Audio output, similar to the udev rule at https://wiki.archlinux.org/title/Bluetooth_headset#Disable_PipeWire_HSP/HFP_profile, this exact bit was taken from https://www.reddit.com/r/NixOS/comments/1eozdb0/comment/lpld54b
+        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/11-bluetooth-policy.conf" ''wireplumber.settings = { bluetooth.autoswitch-to-headset-profile = false }'')
+      ];
+    };
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        # Uncomment the below line to initially pair AirPods. They will only pair while this setting is enabled, but it is not recommended to leave the setting enabled.
+        #ControllerMode = "bredr";
+      };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
