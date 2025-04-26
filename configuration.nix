@@ -131,7 +131,7 @@
     git
     lshw # Used to get stuff for nvidia.nix - may no longer need
     unzip
-    
+
     vscodium # Text editor
     thunderbird # Mail Client
     strawberry # Music Player
@@ -140,6 +140,7 @@
       withOpenASAR = true;
       withVencord = true;
     })
+    prismlauncher
   ];
 
   programs.steam.enable = true;
