@@ -117,6 +117,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.packageOverrides = pkgs: { # Olympus PR
+    Petingoso-olympus = import (builtins.fetchTarball "https://github.com/Petingoso/nixpkgs/archive/olympus.tar.gz") {inherit pkgs;};
+  };
+
   fonts.packages = with pkgs; [
     inter
     jetbrains-mono
@@ -144,6 +148,7 @@
     prismlauncher
     libreoffice-qt6-fresh
     qalculate-qt
+    Petingoso-olympus.olympus # Olympus PR
   ];
 
   programs.steam.enable = true;
