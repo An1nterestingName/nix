@@ -131,6 +131,7 @@
     git
     lshw # Used to get stuff for nvidia.nix - may no longer need
     unzip
+    hunspellDicts.en_GB-ise # Autocorrect for British English
 
     vscodium # Text editor
     thunderbird # Mail Client
@@ -141,6 +142,7 @@
       withVencord = true;
     })
     prismlauncher
+    libreoffice-qt6-fresh
   ];
 
   programs.steam.enable = true;
