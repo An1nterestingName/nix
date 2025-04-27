@@ -149,6 +149,7 @@
     libreoffice-qt6-fresh
     qalculate-qt
     Petingoso-olympus.olympus # Olympus PR
+    blockbench
   ];
 
   programs.steam.enable = true;
