@@ -150,9 +150,29 @@
     qalculate-qt
     Petingoso-olympus.olympus # Olympus PR
     blockbench
+    kdePackages.kcolorchooser
+    jetbrains.idea-community-bin
+    (obs-studio.override {
+      cudaSupport = true;
+    })
+    gradle
   ];
 
   programs.steam.enable = true;
+
+  services.flatpak.enable = true;
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+      config = {
+        common = {
+          default = "kde";
+        };
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
