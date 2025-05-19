@@ -141,10 +141,7 @@
     thunderbird # Mail Client
     strawberry # Music Player
     kitty # Terminal
-    (discord.override { # Discord with client mods
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    vesktop # Discord with client mods
     prismlauncher
     libreoffice-qt6-fresh
     qalculate-qt
