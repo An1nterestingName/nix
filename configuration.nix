@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
+      ./personal.nix
     ];
 
   # Bootloader.
@@ -153,6 +154,7 @@
       cudaSupport = true;
     })
     gradle
+    obsidian
   ];
 
   programs.steam.enable = true;
