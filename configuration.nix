@@ -16,6 +16,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -104,7 +106,7 @@
   users.users.name = {
     isNormalUser = true;
     description = "Name";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [];
   };
 
@@ -139,6 +141,7 @@
     hunspellDicts.en_GB-ise # Autocorrect for British English
 
     vscodium # Text editor
+    zed-editor # Other, better(?) text editor
     thunderbird # Mail Client
     strawberry # Music Player
     kitty # Terminal
@@ -155,11 +158,51 @@
     })
     gradle
     obsidian
+    gnome-disk-utility
+    bitwarden-desktop
+    nsis
+    virt-viewer
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    virtiofsd
+    krita
+    godot
+    blender
+    steam-run
+    aseprite
+    streamcontroller
   ];
+
+  services.resilio = {
+    enable = true;
+    enableWebUI = true;
+  };
+
+  programs.virt-manager.enable = true;
+
+  services.joycond.enable = true;
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
 
   programs.steam.enable = true;
 
   services.flatpak.enable = true;
+
+  programs.java.enable = true;
 
   xdg = {
     portal = {
