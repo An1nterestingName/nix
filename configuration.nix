@@ -176,6 +176,7 @@
     aseprite
     streamcontroller
     kwin-effects-forceblur
+    clickup
   ];
 
   services.resilio = {
