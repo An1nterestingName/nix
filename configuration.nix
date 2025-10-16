@@ -119,6 +119,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    (self: super: {
+      kwin-effects-forceblur = super.kdePackages.callPackage ./custom-packages/kwin-effects-forceblur.nix {};
+    })
+  ];
+
   fonts.packages = with pkgs; [
     inter
     jetbrains-mono
@@ -169,6 +175,7 @@
     steam-run
     aseprite
     streamcontroller
+    kwin-effects-forceblur
   ];
 
   services.resilio = {
